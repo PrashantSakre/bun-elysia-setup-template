@@ -6,7 +6,7 @@ mongoose
 	.then(() => {
 		console.log("MongoDB connected");
 	})
-	.catch((e) => {
+	.catch((e: object) => {
 		console.log("Something went wrong connecting MongoDB", e);
 	});
 
@@ -17,5 +17,4 @@ const userSchema = new mongoose.Schema({
 		unique: true,
 	},
 });
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+export const User = mongoose.model("User", userSchema);

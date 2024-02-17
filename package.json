@@ -2,8 +2,10 @@
   "name": "bun-elysia-jwt-mongodb-husky-setup-template",
   "version": "1.0.50",
   "scripts": {
-    "test": "bun test ./test/**.test.js",
-    "dev": "bun run --watch src/index.js",
+    "test": "bun test ./test/**.test.ts",
+    "dev": "bun run --watch src/index.ts",
+    "build": "bun build src/index.ts",
+    "start": "bun src/index.ts",
     "biome:lint": "bunx @biomejs/biome lint ./src ",
     "biome:format": "bunx @biomejs/biome format --write ./src",
     "biome:check": "bunx @biomejs/biome check --apply ./src",
