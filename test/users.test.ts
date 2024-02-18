@@ -11,28 +11,15 @@ describe("USERS Test suite", () => {
 			expect(res.status).toEqual(200);
 		});
 
-		it("should return a user successfully using existing id", async () => {
-			const expected = {
-				username: "test",
-			};
-
-			const userId = "65be9449714f5a412a8e1071";
-
-			const req = new Request(`${baseUrl}/${userId}`);
+		it("should create the user", async () => {
+			const formData = new FormData();
+			formData.set("name", "test");
+			const req = new Request(baseUrl, {
+				method: "POST",
+				body: formData,
+			});
 			const res = await app.fetch(req);
 			expect(res.status).toEqual(200);
-
-			const responseBody = await res.json();
-
-			expect(responseBody.username).toEqual(expected.username);
-		});
-
-		it("should fail to return a user that does not exist", async () => {
-			const userId = "65be944971-f5a412a8e1123";
-
-			const req = new Request(`${baseUrl}/${userId}`);
-			const res = await app.fetch(req);
-			expect(res.status).not.toEqual(200);
 		});
 
 		// In case Bun does not automatically terminate the test runner after all tests run

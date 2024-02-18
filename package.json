@@ -9,14 +9,20 @@
     "biome:lint": "bunx @biomejs/biome lint ./src ",
     "biome:format": "bunx @biomejs/biome format --write ./src",
     "biome:check": "bunx @biomejs/biome check --apply ./src",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prisma:pull": "bunx prisma pull",
+    "prisma:push": "bunx prisma db push",
+    "prisma:generate": "bunx prisma generate",
+    "prisma:studio": "bunx prisma studio",
+    "prisma:format": "bunx prisma format"
   },
   "dependencies": {
     "@elysiajs/static": "^0.8.1",
     "@elysiajs/swagger": "^0.8.5",
     "@grotto/logysia": "^0.1.1",
+    "@prisma/client": "5.9.1",
     "elysia": "latest",
-    "mongoose": "^8.1.2"
+    "prisma": "^5.9.1"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

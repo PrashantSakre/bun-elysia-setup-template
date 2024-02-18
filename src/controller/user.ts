@@ -1,14 +1,26 @@
 import { Elysia, t } from "elysia";
-import { findAllUser, findUserById } from "../Models/User/Queries";
+import { addUser, getUserById, users } from "../Queries/User/User";
 
 export const usersController = new Elysia({ prefix: "/users" })
 	.get("", async () => {
-		return await findAllUser();
+		return await users();
 	})
+	.post(
+		"",
+		async ({ body }) => {
+			const { name } = body;
+			return await addUser(name);
+		},
+		{
+			body: t.Object({
+				name: t.String(),
+			}),
+		},
+	)
 	.get(
 		"/:id",
 		async ({ params: { id } }) => {
-			return await findUserById(id);
+			return await getUserById(id);
 		},
 		{
 			params: t.Object({
